@@ -1,55 +1,39 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+    <div id="wrapper" class="wrapper black">
+        <div class="page pBlog">
+            <div class="container">
+                <header class="header">
+                    <div class="row between-xs middle-xs">
+                        <div class="col">
+                            <nuxt-link :to="{path: '/'}" class="header__logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25.98">
+                                    <g>
+                                        <path d="M18.46,0,15,6,11.54,0H0L15,26,30,0Z" fill="#4dba87"/>
+                                        <path d="M18.46,0,15,6,11.54,0H6l9,15.59L24,0Z" fill="#435466"/>
+                                    </g>
+                                </svg>
+                                <span class="text">
+                                    Vue Blog Demo
+                                </span>
+                            </nuxt-link>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                    </div>
+                </header>
+                <nuxt/>
+            </div>
+        </div>
+    </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<script>
+    import {mapState} from 'vuex'
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-</style>
+    export default {
+        created () {
+            this.$store.dispatch('loadAllData');
+        }
+    }
+</script>
