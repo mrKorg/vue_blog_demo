@@ -8,8 +8,10 @@
         <div class="eArticle__intro">
             {{ post.body }}
         </div>
-        <userLink v-bind:userId="post.userId"></userLink>
-        <p v-if="commentsCount" class="eArticle__comments">Comments ({{ commentsCount }})</p>
+        <userLink v-bind:userId="post.userId" v-bind:class="'eArticle__user'"></userLink>
+        <p v-if="commentsCount" class="eArticle__comments">
+            Comments ({{ commentsCount }})
+        </p>
     </div>
 </template>
 

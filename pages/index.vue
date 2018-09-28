@@ -18,16 +18,13 @@
                     Loading ...
                 </div>
                 <div v-else="" class="gridRow">
-                    <div v-if="posts.length" class="row">
+                    <transition-group v-if="posts.length" name="list" tag="div" class="row">
                         <div v-for="(post, index) in posts"
                              v-bind:key="index"
                              class="col-xs-12 col-md-6 col-lg-4 col-xl-3">
                             <postPreview v-bind:post="post"></postPreview>
                         </div>
-                        <div class="col-xs-12">
-
-                        </div>
-                    </div>
+                    </transition-group>
                     <div v-else>
                         Sorry, there is no posts
                     </div>

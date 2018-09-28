@@ -11,11 +11,21 @@ const createStore = () => {
         },
         getters: {
             userById: state => id => {
+                id = Number(id);
                 if (state.users) {
-                    return state.users.find(user => user.id === id)
+                    return state.users.find(user => user.id === id);
                 } else {
                     return null;
                 }
+            },
+            getPostById: state => id => {
+                let post = null;
+                if (state.posts) {
+                    post = state.posts.find((post) => {
+                        return post.id === id
+                    });
+                }
+                return post;
             },
             getCommentsCountByPostId: state => id => {
                 let commentsCount = 0;
@@ -23,10 +33,19 @@ const createStore = () => {
                     state.comments.forEach((comment) => {
                         if (comment.postId === id) {
                             commentsCount++;
-                        } 
+                        }
                     });
                 }
                 return commentsCount;
+            },
+            getCommentsByPostId: state => id => {
+                let comments = [];
+                if (state.comments) {
+                    comments = state.comments.filter((comment) => {
+                        return comment.postId === id;
+                    });
+                }
+                return comments;
             }
         },
         mutations: {
@@ -73,6 +92,24 @@ const createStore = () => {
                         new Error('Oops, getting comments error')
                     })
             },
+            loadPostById({commit}, data) {
+                return axios.get(`https://jsonplaceholder.typicode.com/posts/${data.id}`)
+                    .then((res) => {
+                        return res.data;
+                    })
+                    .catch(() => {
+                        new Error('Oops, getting post error')
+                    })
+            },
+            loadPostsByUserId({commit}, data) {
+                return axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${data.id}`)
+                    .then((res) => {
+                        return res.data;
+                    })
+                    .catch(() => {
+                        new Error('Oops, getting user posts error')
+                    })
+            }
         }
     })
 };

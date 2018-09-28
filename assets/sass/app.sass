@@ -329,8 +329,10 @@ body
     @include element(user)
         font-size: 12px
         margin-bottom: 10px
-        @extend %fontTitle
+        span
+            font-size: 10px
         a
+            @extend %fontTitle
             opacity: .5
             color: inherit
             &:hover
@@ -338,6 +340,86 @@ body
     @include element(comments)
         font-size: 12px
 
+.pArticle
+    padding-bottom: 50px
+    @include element(menu)
+        padding-bottom: 30px
+        margin-bottom: 30px
+        border-bottom: 1px solid $grayBorder
+    @include element(subscribe)
+        margin-bottom: 60px
+    @include element(articles)
+        .iconLogos
+            margin-bottom: 20px
+            display: block
+            opacity: .1
+            color: $black
+        .gridRow
+            & > .row
+                & > div
+                    padding-bottom: 0
+    @include element(title)
+        position: relative
+        @extend %fontTitle, %titleMiddle
+        @media (min-width: $md)
+            margin-bottom: 20px
+            padding-bottom: 20px
+        @include xs()
+            margin-bottom: 10px
+            padding-bottom: 10px
+        &::after
+            content: ''
+            background: $red
+            width: 25px
+            height: 2px
+            display: block
+            @include position(absolute, null, null, 0, 0)
+    @include element(user)
+        position: relative
+        font-size: 12px
+        @media (min-width: $md)
+            margin-bottom: 20px
+        @include xs()
+            margin-bottom: 10px
+        span
+            font-size: 10px
+        a
+            @extend %fontTitle
+            opacity: .5
+            color: inherit
+            &:hover
+                opacity: 1
+    @include element(content)
+        margin-bottom: 40px
+        padding-bottom: 40px
+        border-bottom: 1px solid rgba($white, .5)
+    @include element(commentsTitle)
+        @extend %fontTitle
+        position: relative
+        margin-bottom: 20px
+        padding-bottom: 10px
+        &::after
+            content: ''
+            background: $red
+            width: 25px
+            height: 2px
+            display: block
+            @include position(absolute, null, null, 0, 0)
+    @include element(comments)
+        list-style: none
+        margin-bottom: 20px
+.eComment
+    @include element(name)
+        @extend %fontTitle
+        margin-bottom: 5px
+    @include element(text)
+        margin-bottom: 20px
+.eUser
+    margin-bottom: 20px
+    @include element(label)
+        font-size: 10px
+    @include element(name)
+        @extend %fontTitle
 // Parts
 .bFilterGroup
     @include element(box)

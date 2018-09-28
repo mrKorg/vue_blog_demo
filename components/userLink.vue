@@ -1,5 +1,6 @@
 <template>
-    <p v-if="user" class="eArticle__user">
+    <p v-if="user" :class="elementClass">
+        <span>Author:</span>
         <nuxt-link :to="{path: '/user/' + user.id}">
             {{ user.name }}
         </nuxt-link>
@@ -11,7 +12,8 @@
 
     export default {
         props: {
-            userId: { type: Number, default: null }
+            userId: { type: Number, default: null },
+            elementClass: {type: String, default: null}
         },
         computed: {
             ...mapGetters(['userById']),
