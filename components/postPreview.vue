@@ -8,7 +8,7 @@
         <div class="eArticle__intro">
             {{ post.body }}
         </div>
-        <userLink v-bind:userId="post.userId" v-bind:class="'eArticle__user'"></userLink>
+        <userLink v-bind:userId="post.userId"></userLink>
         <p v-if="commentsCount" class="eArticle__comments">
             Comments ({{ commentsCount }})
         </p>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import {mapGetters} from 'vuex'
+    import {mapGetters} from 'vuex';
     import userLink from '~/components/userLink.vue';
 
     export default {

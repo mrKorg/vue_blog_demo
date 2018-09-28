@@ -1,8 +1,8 @@
 <template>
-    <div class="pUser" v-if="user">
+    <div class="pUser" >
         <div class="container">
             <div class="page__wrap">
-                <div class="row">
+                <div class="row" v-if="posts">
                     <div class="col-xs-12 col-lg-3">
                         <div class="mBreadcrumbs">
                             <nuxt-link :to="{path: '/'}">
@@ -13,14 +13,7 @@
                                 User Posts
                             </span>
                         </div>
-                        <div class="eUser">
-                            <p class="eUser__label">
-                                Author
-                            </p>
-                            <div class="eUser__name">
-                                {{ user.name }}
-                            </div>
-                        </div>
+                        <userLink v-bind:userId="userId"></userLink>
                     </div>
                     <div class="col-xs-12 col-lg-9 last-lg">
                         <div v-if="null === posts">
@@ -40,29 +33,28 @@
                         </div>
                     </div>
                 </div>
+                <div v-else>
+                    Loading...
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import {mapGetters} from 'vuex'
+    import {mapGetters} from 'vuex';
     import postPreview from '~/components/postPreview.vue';
+    import userLink from '~/components/userLink.vue';
 
     export default {
         components: {
-            postPreview
+            postPreview,
+            userLink
         },
         data() {
             return {
                 userId: this.$route.params.id,
                 posts: null
-            }
-        },
-        computed: {
-            ...mapGetters(['userById']),
-            user() {
-                return this.userById(this.userId);
             }
         },
         created() {

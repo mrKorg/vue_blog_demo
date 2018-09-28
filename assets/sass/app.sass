@@ -326,17 +326,6 @@ body
             margin-bottom: 15px
     @include element(intro)
         margin-bottom: 10px
-    @include element(user)
-        font-size: 12px
-        margin-bottom: 10px
-        span
-            font-size: 10px
-        a
-            @extend %fontTitle
-            opacity: .5
-            color: inherit
-            &:hover
-                opacity: 1
     @include element(comments)
         font-size: 12px
 
@@ -374,21 +363,6 @@ body
             height: 2px
             display: block
             @include position(absolute, null, null, 0, 0)
-    @include element(user)
-        position: relative
-        font-size: 12px
-        @media (min-width: $md)
-            margin-bottom: 20px
-        @include xs()
-            margin-bottom: 10px
-        span
-            font-size: 10px
-        a
-            @extend %fontTitle
-            opacity: .5
-            color: inherit
-            &:hover
-                opacity: 1
     @include element(content)
         margin-bottom: 40px
         padding-bottom: 40px
@@ -416,10 +390,20 @@ body
         margin-bottom: 20px
 .eUser
     margin-bottom: 20px
+    .eArticle &
+        margin-bottom: 10px
     @include element(label)
         font-size: 10px
     @include element(name)
         @extend %fontTitle
+        color: inherit
+        cursor: default
+        .eArticle &,
+        .pArticle &
+            opacity: .5
+            cursor: pointer
+            &:hover
+                opacity: 1
 // Parts
 .bFilterGroup
     @include element(box)

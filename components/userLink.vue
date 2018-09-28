@@ -1,7 +1,7 @@
 <template>
-    <p v-if="user" :class="elementClass">
-        <span>Author:</span>
-        <nuxt-link :to="{path: '/user/' + user.id}">
+    <p v-if="user" class="eUser">
+        <span class="eUser__label">Author:</span>
+        <nuxt-link :to="{path: '/user/' + user.id}" class="eUser__name">
             {{ user.name }}
         </nuxt-link>
     </p>
@@ -12,7 +12,7 @@
 
     export default {
         props: {
-            userId: { type: Number, default: null },
+            userId: { type: [String, Number], default: null },
             elementClass: {type: String, default: null}
         },
         computed: {

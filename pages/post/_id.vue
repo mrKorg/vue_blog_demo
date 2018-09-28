@@ -18,7 +18,7 @@
                         <h1 class="pArticle__title">
                             {{ post.title }}
                         </h1>
-                        <userLink v-bind:userId="post.userId" v-bind:class="'pArticle__user'"></userLink>
+                        <userLink v-bind:userId="post.userId"></userLink>
                         <div class="content pArticle__content">
                             {{ post.body }}
                         </div>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-    import {mapGetters} from 'vuex'
+    import {mapGetters} from 'vuex';
     import userLink from '~/components/userLink.vue';
 
     export  default {
