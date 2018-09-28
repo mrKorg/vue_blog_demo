@@ -42,7 +42,6 @@
 </template>
 
 <script>
-    import {mapGetters} from 'vuex';
     import postPreview from '~/components/postPreview.vue';
     import userLink from '~/components/userLink.vue';
 
